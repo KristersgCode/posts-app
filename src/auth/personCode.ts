@@ -6,7 +6,7 @@ export function validatePersonCode(personCode: string): string | null {
   }
 
   if (!/^\d{6}-\d{5}$/.test(personCode)) {
-    return "Izmantojiet formātu DDMMYY-XXXXX";
+    return "Izmantojiet formātu 123456-12345";
   }
 
   if (personCode !== VALID_PERSON_CODE) {
