@@ -58,7 +58,7 @@ export function LoginScreen() {
                 setError(null);
               }}
               onSubmitEditing={handleLogin}
-              placeholder="DDMMYY-XXXXX"
+              placeholder="123456-12345"
               autoCapitalize="none"
               autoCorrect={false}
               spellCheck={false}
