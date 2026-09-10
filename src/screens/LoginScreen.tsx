@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -12,17 +11,21 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { validatePersonCode } from "../auth/personCode";
+import { useSession } from "../auth/sessionProvider";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { ErrorText } from "../components/ErrorText";
 import { colors } from "../theme";
 
 export function LoginScreen() {
+  const { signIn } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [personCode, setPersonCode] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const canSubmit = personCode.length === 0 || isSubmitting;
 
-  function handleLogin() {
-    if (personCode.length === 0) return;
+  async function handleLogin() {
+    if (canSubmit) return;
 
     const validationError = validatePersonCode(personCode);
     setError(validationError);
@@ -30,8 +33,15 @@ export function LoginScreen() {
       return;
     }
 
-    Keyboard.dismiss();
-    Alert.alert("Success", "Posts screen Not yet implemented");
+    setIsSubmitting(true);
+    try {
+      Keyboard.dismiss();
+      await signIn();
+    } catch {
+      setError("Neizdevās izveidot sesiju. Lūdzu mēģiniet vēlreiz.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -53,6 +63,7 @@ export function LoginScreen() {
               title="Personas kods"
               accessibilityHint="Six digits, a hyphen, then five digits."
               value={personCode}
+              editable={!isSubmitting}
               onChangeText={(value) => {
                 setPersonCode(value);
                 setError(null);
@@ -65,11 +76,7 @@ export function LoginScreen() {
               returnKeyType="go"
             />
             {error && <ErrorText message={error} />}
-            <Button
-              title="Ienāc"
-              onPress={handleLogin}
-              disabled={personCode.length === 0}
-            />
+            <Button title="Ienāc" onPress={handleLogin} disabled={canSubmit} />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
