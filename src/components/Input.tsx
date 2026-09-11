@@ -18,9 +18,7 @@ export function Input({ title, onFocus, onBlur, style, ...props }: InputProps) {
 
   return (
     <View>
-      <Text style={styles.label}>
-        {title}
-      </Text>
+      <Text style={styles.label}>{title}</Text>
       <TextInput
         placeholderTextColor={colors.purple}
         selectionColor={colors.purple}

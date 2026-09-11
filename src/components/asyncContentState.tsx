@@ -1,5 +1,5 @@
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import { Button } from "./Button";
+import { Button } from "./button";
 import { colors } from "../theme";
 
 type AsyncContentState = {
@@ -31,9 +31,7 @@ export function AsyncContentState({
   if (error) {
     return (
       <View style={styles.state}>
-        <Text style={styles.message}>
-          {error}
-        </Text>
+        <Text style={styles.message}>{error}</Text>
         <Button title="Mēģināt vēlreiz" onPress={onRetry} />
       </View>
     );

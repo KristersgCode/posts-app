@@ -12,9 +12,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { validatePersonCode } from "../auth/personCode";
 import { useSession } from "../auth/sessionProvider";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { ErrorText } from "../components/ErrorText";
+import { Input } from "../components/input";
+import { Button } from "../components/button";
+import { ErrorText } from "../components/errorText";
 import { colors } from "../theme";
 
 export function LoginScreen() {
