@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Remove all accessibility related code props [POSTS-010] #10.
 - Added logout button to header [POSTS-009] #9.
 - Added post detail screen [POSTS-008] #8.
 - Update posts screen (fetch and show list of posts with pagination) [POSTS-007] #7.

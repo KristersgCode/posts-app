@@ -23,7 +23,6 @@ function RootNavigator() {
       <View style={styles.loading}>
         <ActivityIndicator
           color={colors.yellow}
-          accessibilityLabel="Loading session"
         />
       </View>
     );

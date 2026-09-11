@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,16 +15,13 @@ type InputProps = TextInputProps & {
 
 export function Input({ title, onFocus, onBlur, style, ...props }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
-  const labelId = useId();
 
   return (
     <View>
-      <Text nativeID={labelId} style={styles.label}>
+      <Text style={styles.label}>
         {title}
       </Text>
       <TextInput
-        accessibilityLabel={title}
-        accessibilityLabelledBy={labelId}
         placeholderTextColor={colors.purple}
         selectionColor={colors.purple}
         {...props}

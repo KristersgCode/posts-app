@@ -61,7 +61,6 @@ export function LoginScreen() {
             </Text>
             <Input
               title="Personas kods"
-              accessibilityHint="Six digits, a hyphen, then five digits."
               value={personCode}
               editable={!isSubmitting}
               onChangeText={(value) => {

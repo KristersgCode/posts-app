@@ -7,11 +7,7 @@ type ErrorTextProps = {
 
 export function ErrorText({ message }: ErrorTextProps) {
   return (
-    <Text
-      accessibilityRole="alert"
-      accessibilityLiveRegion="polite"
-      style={styles.error}
-    >
+    <Text style={styles.error}>
       {message}
     </Text>
   );
