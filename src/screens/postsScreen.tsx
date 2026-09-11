@@ -1,25 +1,29 @@
 import { FlatList, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { type Post } from "../api/posts";
 import { ScrollButton } from "../components/scrollButton";
 import { PostContainer } from "../components/postContainer";
-import { PostsListState } from "../components/postsListState";
+import { AsyncContentState } from "../components/asyncContentState";
 import { usePaginatedPosts } from "../hooks/usePaginatedPosts";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 import { colors } from "../theme";
 
 export function PostsScreen() {
+  const router = useRouter();
   const { posts, isLoading, error, loadMore, retry } = usePaginatedPosts();
   const { listRef, showScrollToTop, handleScroll, scrollToTop } =
     useScrollToTop<Post>();
 
   const listState = (
-    <PostsListState
+    <AsyncContentState
       isLoading={isLoading}
       error={error}
       isEmpty={posts.length === 0}
       onRetry={retry}
+      loadingMessage="Ielādē ierakstus…"
+      emptyMessage="Nav ierakstu"
     />
   );
 
@@ -30,7 +34,14 @@ export function PostsScreen() {
         ref={listRef}
         data={posts}
         keyExtractor={(post) => String(post.id)}
-        renderItem={({ item }) => <PostContainer post={item} />}
+        renderItem={({ item }) => (
+          <PostContainer
+            post={item}
+            onPress={() =>
+              router.push({ pathname: "/posts/[id]", params: { id: item.id } })
+            }
+          />
+        )}
         contentContainerStyle={styles.list}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
