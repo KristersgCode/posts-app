@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Added post detail screen [POSTS-008] #8.
 - Update posts screen (fetch and show list of posts with pagination) [POSTS-007] #7.
 - Persist authentication sessions across app restarts and add a protected empty posts screen [POSTS-006] #6.
 - Set up expo router [POSTS-005] #5.

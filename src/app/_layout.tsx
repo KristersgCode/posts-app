@@ -49,6 +49,15 @@ function RootNavigator() {
             headerShadowVisible: false,
           }}
         />
+        <Stack.Screen
+          name="posts/[id]"
+          options={{
+            title: "Ieraksts",
+            headerStyle: { backgroundColor: colors.white },
+            headerTintColor: colors.black,
+            headerShadowVisible: false,
+          }}
+        />
       </Stack.Protected>
     </Stack>
   );

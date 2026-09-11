@@ -2,24 +2,28 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { Button } from "./Button";
 import { colors } from "../theme";
 
-type PostsListStateProps = {
+type AsyncContentState = {
   isLoading: boolean;
   error: string | null;
   isEmpty: boolean;
   onRetry: () => void;
+  loadingMessage: string;
+  emptyMessage: string;
 };
 
-export function PostsListState({
+export function AsyncContentState({
   isLoading,
   error,
   isEmpty,
   onRetry,
-}: PostsListStateProps) {
+  loadingMessage,
+  emptyMessage,
+}: AsyncContentState) {
   if (isLoading) {
     return (
       <View style={styles.state}>
         <ActivityIndicator color={colors.purple} size="large" />
-        <Text style={styles.message}>Ielādē ierakstus…</Text>
+        <Text style={styles.message}>{loadingMessage}</Text>
       </View>
     );
   }
@@ -27,7 +31,9 @@ export function PostsListState({
   if (error) {
     return (
       <View style={styles.state}>
-        <Text style={styles.message}>{error}</Text>
+        <Text accessibilityRole="alert" style={styles.message}>
+          {error}
+        </Text>
         <Button title="Mēģināt vēlreiz" onPress={onRetry} />
       </View>
     );
@@ -36,7 +42,7 @@ export function PostsListState({
   if (isEmpty) {
     return (
       <View style={styles.state}>
-        <Text style={styles.message}>Nav ierakstu</Text>
+        <Text style={styles.message}>{emptyMessage}</Text>
       </View>
     );
   }
