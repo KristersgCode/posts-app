@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Added logout button to header [POSTS-009] #9.
 - Added post detail screen [POSTS-008] #8.
 - Update posts screen (fetch and show list of posts with pagination) [POSTS-007] #7.
 - Persist authentication sessions across app restarts and add a protected empty posts screen [POSTS-006] #6.

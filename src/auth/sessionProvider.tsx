@@ -6,12 +6,13 @@ import {
   type ReactNode,
 } from "react";
 
-import { restoreSession, saveSession } from "./session";
+import { endSession, restoreSession, saveSession } from "./session";
 
 type SessionContextValue = {
   isAuthenticated: boolean;
   isLoading: boolean;
   signIn: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 const SessionContext = createContext<SessionContextValue | null>(null);
@@ -50,8 +51,15 @@ export function SessionProvider({ children }: SessionProviderProps) {
     setIsAuthenticated(true);
   }
 
+  async function signOut() {
+    await endSession();
+    setIsAuthenticated(false);
+  }
+
   return (
-    <SessionContext.Provider value={{ isAuthenticated, isLoading, signIn }}>
+    <SessionContext.Provider
+      value={{ isAuthenticated, isLoading, signIn, signOut }}
+    >
       {children}
     </SessionContext.Provider>
   );
