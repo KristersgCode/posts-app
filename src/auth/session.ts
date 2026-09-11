@@ -10,7 +10,6 @@ export async function saveSession(): Promise<void> {
   await AsyncStorage.setItem(SESSION_KEY, "authenticated");
 }
 
-//delete session for debugging purposes
-export async function deleteSession(): Promise<void> {
+export async function endSession(): Promise<void> {
   await AsyncStorage.removeItem(SESSION_KEY);
 }

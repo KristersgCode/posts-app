@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 import { SessionProvider, useSession } from "../auth/sessionProvider";
+import { LogoutButton } from "../components/logoutButton";
 import { colors } from "../theme";
 
 export default function RootLayout() {
@@ -34,6 +35,7 @@ function RootNavigator() {
         headerStyle: { backgroundColor: colors.purple },
         headerTintColor: colors.white,
         contentStyle: { backgroundColor: colors.purple },
+        headerRight: () => (isAuthenticated ? <LogoutButton /> : null),
       }}
     >
       <Stack.Protected guard={!isAuthenticated}>
