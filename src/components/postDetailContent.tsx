@@ -9,9 +9,7 @@ type PostDetailContentProps = {
 export function PostDetailContent({ post }: PostDetailContentProps) {
   return (
     <ScrollView contentContainerStyle={styles.content}>
-      <Text style={styles.metadata}>
-        ID: {post.id} · Lietotāja ID: {post.userId}
-      </Text>
+      <Text style={styles.metadata}>ID: {post.id}</Text>
       <Text style={styles.title}>{post.title}</Text>
       <Text style={styles.body}>{post.body}</Text>
     </ScrollView>
