@@ -57,7 +57,7 @@ export function LoginScreen() {
           <View style={styles.form}>
             <Text style={styles.title}>Posts App</Text>
             <Text style={styles.description}>
-              Ievadi savu personas kodu lai turpinātu
+              Lai turpinātu, ievadi savu personas kodu.
             </Text>
             <Input
               title="Personas kods"
