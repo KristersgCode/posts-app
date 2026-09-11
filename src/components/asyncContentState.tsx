@@ -31,7 +31,7 @@ export function AsyncContentState({
   if (error) {
     return (
       <View style={styles.state}>
-        <Text accessibilityRole="alert" style={styles.message}>
+        <Text style={styles.message}>
           {error}
         </Text>
         <Button title="Mēģināt vēlreiz" onPress={onRetry} />

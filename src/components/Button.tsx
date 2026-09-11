@@ -10,8 +10,6 @@ type ButtonProps = {
 export function Button({ title, onPress, disabled = false }: ButtonProps) {
   return (
     <Pressable
-      accessibilityRole="button"
-      accessibilityState={{ disabled }}
       disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => [

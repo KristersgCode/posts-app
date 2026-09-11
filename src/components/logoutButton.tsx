@@ -21,8 +21,6 @@ export function LogoutButton() {
 
   return (
     <Pressable
-      accessibilityRole="button"
-      accessibilityState={{ disabled: isSigningOut }}
       disabled={isSigningOut}
       onPress={handleLogout}
       style={({ pressed }) => [
