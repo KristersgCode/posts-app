@@ -4,7 +4,8 @@ A small React Native application built with Expo.
 
 The app includes:
 
-- Personal code validation and a simple authentication flow
+- Person code validation and a simple authentication flow
+- Valid person code for testing the flow: 120392-13811
 - Persisted authentication session using AsyncStorage
 - Paginated posts fetched from JSONPlaceholder
 - Post details screen
