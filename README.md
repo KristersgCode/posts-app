@@ -37,3 +37,11 @@ npm test
 ## API
 
 Posts are fetched from [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts).
+
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/Posts_app_login_1.png" width="250" alt="Login screen" />
+  <img src="./screenshots/Posts_app_posts_2.png" width="250" alt="Posts screen" />
+  <img src="./screenshots/Posts_app_details_3.png" width="250" alt="Post details screen" />
+</p>
